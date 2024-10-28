@@ -1,9 +1,9 @@
-# Your Name Here
+# Ryan Dennis
 # UWYO COSC 1010
-# Submission Date
-# Lab XX
-# Lab Section: 
-# Sources, people worked with, help given to: 
+# Submission Date 10/28/2024
+# Lab 07
+# Lab Section: 14
+# Sources, people worked with, help given to: Geeks for Geek, Stack Overflow
 # your
 # comments
 # here
@@ -16,10 +16,19 @@
     # To do so you can use the methods `.isdigit()` or `.isnumeric()`
     # If a user did not enter a number output a statement saying so
 # You will continue to prompt the user until a proper integer value is entered
+fact = 1
+while True:
+    factorial = input("Enter the upper bound")
+    if factorial.isdigit() and int(factorial) > 0:
+        for i in range(1, int(factorial)+1):
+            fact = fact * i
+        break
+    else:
+        print("Please input a number")
+        continue
 
-factorial = 1
 
-print(f"The result of the factorial based on the given bound is {factorial}")
+print(f"The result of the factorial based on the given bound is {fact}")
 
 print("*"*75)
 # Create a while loop that prompts a user for input of an integer values
@@ -38,6 +47,25 @@ print("*"*75)
 # The sum should start at 0 
 
 num_sum = 0 
+while True:
+    num = input("Enter the number you want to add to the sum or type exit to quit and see the total sum")
+    if "-" in num:
+        new_num = num.replace('-','')
+        if new_num.isdigit():
+            neg_int = int(new_num)
+            num_sum -= neg_int
+        else:
+            print("Please input a number or exit")
+        continue
+    if num.isdigit():
+        integer = int(num)
+        num_sum += integer
+    elif num=="exit":
+        break
+    else:
+        print("Please input a number or exit")
+        continue
+
 
 print(f"Your final sum is {num_sum}")
 
@@ -58,5 +86,34 @@ print("*"*75)
     # So, it should function the same for `5 + 6` as `5+6`
 # Print the result of the equation
 # Again, loop through prompting the user for input until `exit` in any casing is input 
-
-        
+import re
+while True:
+    calculation = input("Enter a number followed by the operator and another number or type exit to quit")
+    numbers = re.findall(r'\d+', calculation)
+    if len(numbers) >= 2:
+        num_1 = int(numbers[0])
+        num_2 = int(numbers[1])
+        if "+" in calculation:
+            number_sum = num_1 + num_2
+            print(number_sum)
+            break
+        elif "-" in calculation:
+            number_sum = num_1 - num_2
+            print(number_sum)
+            break
+        elif "/" in calculation:
+            number_sum = num_1 / num_2
+            print(number_sum)
+            break
+        elif "*" in calculation:
+            number_sum = num_1 * num_2
+            print(number_sum)
+            break
+        elif "%" in calculation:
+            number_sum = num_1 % num_2
+            print(number_sum)
+            break
+        elif "exit" == calculation.lower():
+            break
+    else:
+        print("Please input numbers or type exit to quit")
