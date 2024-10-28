@@ -23,12 +23,12 @@ while True:
         if factorial.isdigit() and int(factorial) > 0:
             for i in range(1, int(factorial)+1):
                 fact = fact * i
-        break
+            break
         else:
             print("Please input a number")
             continue
     else:
-        print(enter a positive number)
+        print("Enter a positive number")
 
 
 print(f"The result of the factorial based on the given bound is {fact}")
@@ -104,23 +104,18 @@ while True:
             if "+" in operator:
                 number_sum = num_1 + num_2
                 print(number_sum)
-                break
             elif "-" in operator:
                 number_sum = num_1 - num_2
                 print(number_sum)
-                break
             elif "/" in operator:
                 number_sum = num_1 / num_2
                 print(number_sum)
-                break
             elif "*" in operator:
                 number_sum = num_1 * num_2
                 print(number_sum)
-                break
             elif "%" in operator:
                 number_sum = num_1 % num_2
                 print(number_sum)
-                break
             else:
                 print("Please input one of the operators +,-,/,*,%.")
         else:
