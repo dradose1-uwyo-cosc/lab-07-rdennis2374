@@ -19,13 +19,16 @@
 fact = 1
 while True:
     factorial = input("Enter the upper bound")
-    if factorial.isdigit() and int(factorial) > 0:
-        for i in range(1, int(factorial)+1):
-            fact = fact * i
+    if int(factorial) > 0:
+        if factorial.isdigit() and int(factorial) > 0:
+            for i in range(1, int(factorial)+1):
+                fact = fact * i
         break
+        else:
+            print("Please input a number")
+            continue
     else:
-        print("Please input a number")
-        continue
+        print(enter a positive number)
 
 
 print(f"The result of the factorial based on the given bound is {fact}")
