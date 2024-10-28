@@ -60,7 +60,7 @@ while True:
     if num.isdigit():
         integer = int(num)
         num_sum += integer
-    elif num=="exit":
+    elif num.lower()=="exit":
         break
     else:
         print("Please input a number or exit")
@@ -88,35 +88,37 @@ print("*"*75)
 # Again, loop through prompting the user for input until `exit` in any casing is input 
 import re
 while True:
-    calculation = input("Enter a number followed by the operator and another number or type exit to quit")
+    calculation = input("Enter an operand followed by the operator and another operand or type exit to quit")
     if "exit" == calculation.lower():
         break
     else:
         numbers = re.findall(r'\d+', calculation)
-        if len(numbers) >= 2:
+        new_calculation = calculation.replace(numbers[0],'')
+        operator = new_calculation.replace(numbers[1],'')
+        if int(numbers[0]) and int(numbers[1]):
             num_1 = int(numbers[0])
             num_2 = int(numbers[1])
-            new_calculation = calculation.replace(numbers[0],'')
-            even_newer_calculation = new_calculation.replace(numbers[1],'')
-            if "+" in even_newer_calculation:
+            if "+" in operator:
                 number_sum = num_1 + num_2
                 print(number_sum)
                 break
-            elif "-" in even_newer_calculation:
+            elif "-" in operator:
                 number_sum = num_1 - num_2
                 print(number_sum)
                 break
-            elif "/" in even_newer_calculation:
+            elif "/" in operator:
                 number_sum = num_1 / num_2
                 print(number_sum)
                 break
-            elif "*" in even_newer_calculation:
+            elif "*" in operator:
                 number_sum = num_1 * num_2
                 print(number_sum)
                 break
-            elif "%" in even_newer_calculation:
+            elif "%" in operator:
                 number_sum = num_1 % num_2
                 print(number_sum)
                 break
+            else:
+                print("Please input one of the operators +,-,/,*,%.")
         else:
             print("Please input numbers or type exit to quit")
