@@ -89,31 +89,34 @@ print("*"*75)
 import re
 while True:
     calculation = input("Enter a number followed by the operator and another number or type exit to quit")
-    numbers = re.findall(r'\d+', calculation)
-    if len(numbers) >= 2:
-        num_1 = int(numbers[0])
-        num_2 = int(numbers[1])
-        if "+" in calculation:
-            number_sum = num_1 + num_2
-            print(number_sum)
-            break
-        elif "-" in calculation:
-            number_sum = num_1 - num_2
-            print(number_sum)
-            break
-        elif "/" in calculation:
-            number_sum = num_1 / num_2
-            print(number_sum)
-            break
-        elif "*" in calculation:
-            number_sum = num_1 * num_2
-            print(number_sum)
-            break
-        elif "%" in calculation:
-            number_sum = num_1 % num_2
-            print(number_sum)
-            break
-        elif "exit" == calculation.lower():
-            break
+    if "exit" == calculation.lower():
+        break
     else:
-        print("Please input numbers or type exit to quit")
+        numbers = re.findall(r'\d+', calculation)
+        if len(numbers) >= 2:
+            num_1 = int(numbers[0])
+            num_2 = int(numbers[1])
+            new_calculation = calculation.replace(numbers[0],'')
+            even_newer_calculation = new_calculation.replace(numbers[1],'')
+            if "+" in even_newer_calculation:
+                number_sum = num_1 + num_2
+                print(number_sum)
+                break
+            elif "-" in even_newer_calculation:
+                number_sum = num_1 - num_2
+                print(number_sum)
+                break
+            elif "/" in even_newer_calculation:
+                number_sum = num_1 / num_2
+                print(number_sum)
+                break
+            elif "*" in even_newer_calculation:
+                number_sum = num_1 * num_2
+                print(number_sum)
+                break
+            elif "%" in even_newer_calculation:
+                number_sum = num_1 % num_2
+                print(number_sum)
+                break
+        else:
+            print("Please input numbers or type exit to quit")
